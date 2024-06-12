@@ -53,13 +53,13 @@ int main(array<System::String ^> ^args)
 {
 
 char dan[7][55]={ 
-  "Какая команда команда имеет больше всего призовых?    ", 
-  "Сколько команд в регионе <Введите регион>?            ", 
-  "Алфавитный список всех команд                         ", 
-  "Диаграмма: процент сыгранных матчей                   ", 
-  "Есть ли одинаковые призовые у команд из разных регион?",
-  "Вопрос 6                                              ",
-  "Выход                                                 " 
+  "РљР°РєР°СЏ РєРѕРјР°РЅРґР° РєРѕРјР°РЅРґР° РёРјРµРµС‚ Р±РѕР»СЊС€Рµ РІСЃРµРіРѕ РїСЂРёР·РѕРІС‹С…?    ", 
+  "РЎРєРѕР»СЊРєРѕ РєРѕРјР°РЅРґ РІ СЂРµРіРёРѕРЅРµ <Р’РІРµРґРёС‚Рµ СЂРµРіРёРѕРЅ>?            ", 
+  "РђР»С„Р°РІРёС‚РЅС‹Р№ СЃРїРёСЃРѕРє РІСЃРµС… РєРѕРјР°РЅРґ                         ", 
+  "Р”РёР°РіСЂР°РјРјР°: РїСЂРѕС†РµРЅС‚ СЃС‹РіСЂР°РЅРЅС‹С… РјР°С‚С‡РµР№                   ", 
+  "Р•СЃС‚СЊ Р»Рё РѕРґРёРЅР°РєРѕРІС‹Рµ РїСЂРёР·РѕРІС‹Рµ Сѓ РєРѕРјР°РЅРґ РёР· СЂР°Р·РЅС‹С… СЂРµРіРёРѕРЅ?",
+  "Р’РѕРїСЂРѕСЃ 6                                              ",
+  "Р’С‹С…РѕРґ                                                 " 
   }; 
 char BlankLine[ ]="                                                        "; 
 int NT; 
@@ -74,7 +74,7 @@ int NT;
  Console::BufferWidth=Console::WindowWidth; 
  if((in=fopen("table.dat","r"))==NULL) 
 { 
-printf("\nФайл table  не открыт !"); 
+printf("\nР¤Р°Р№Р» table  РЅРµ РѕС‚РєСЂС‹С‚ !"); 
 _getch(); exit(1); 
 } 
  fscanf(in,"%d",&NT); 
@@ -129,13 +129,13 @@ _getch();
 int menu(int n) 
 {
 	char dan[7][55]={ 
-  "Какая команда команда имеет больше всего призовых?    ", 
-  "Сколько команд в регионе <Введите регион>?            ", 
-  "Алфавитный список всех команд                         ", 
-  "Диаграмма: процент сыгранных матчей                   ", 
-  "Есть ли одинаковые призовые у команд из разных регион?",
-  "Вопрос 6                                              ",
-  "Выход                                                 " 
+  "РљР°РєР°СЏ РєРѕРјР°РЅРґР° РєРѕРјР°РЅРґР° РёРјРµРµС‚ Р±РѕР»СЊС€Рµ РІСЃРµРіРѕ РїСЂРёР·РѕРІС‹С…?    ", 
+  "РЎРєРѕР»СЊРєРѕ РєРѕРјР°РЅРґ РІ СЂРµРіРёРѕРЅРµ <Р’РІРµРґРёС‚Рµ СЂРµРіРёРѕРЅ>?            ", 
+  "РђР»С„Р°РІРёС‚РЅС‹Р№ СЃРїРёСЃРѕРє РІСЃРµС… РєРѕРјР°РЅРґ                         ", 
+  "Р”РёР°РіСЂР°РјРјР°: РїСЂРѕС†РµРЅС‚ СЃС‹РіСЂР°РЅРЅС‹С… РјР°С‚С‡РµР№                   ", 
+  "Р•СЃС‚СЊ Р»Рё РѕРґРёРЅР°РєРѕРІС‹Рµ РїСЂРёР·РѕРІС‹Рµ Сѓ РєРѕРјР°РЅРґ РёР· СЂР°Р·РЅС‹С… СЂРµРіРёРѕРЅ?",
+  "Р’РѕРїСЂРѕСЃ 6                                              ",
+  "Р’С‹С…РѕРґ                                                 " 
   }; 
 char BlankLine[ ]="                                                        ";
 int y1=0,y2=n-1; 
@@ -181,10 +181,10 @@ Console::ForegroundColor=ConsoleColor::White;
 Console::BackgroundColor=ConsoleColor::Red; 
 Console::CursorLeft=10; 
 Console::CursorTop=15; 
-printf("Наибольшие призовые %2.2f млн долларов",best.prise); 
+printf("РќР°РёР±РѕР»СЊС€РёРµ РїСЂРёР·РѕРІС‹Рµ %2.2f РјР»РЅ РґРѕР»Р»Р°СЂРѕРІ",best.prise); 
 Console::CursorLeft=10; 
 Console::CursorTop=16; 
-printf("имеет команда %s",best.name); 
+printf("РёРјРµРµС‚ РєРѕРјР°РЅРґР° %s",best.name); 
 getch(); 
 } 
 
@@ -197,7 +197,7 @@ Console::CursorLeft=10;
  Console::CursorTop=17;
 Console::ForegroundColor=ConsoleColor::White;
 Console::BackgroundColor=ConsoleColor::Red;
- Console::WriteLine(L"Введите регион:"); 
+ Console::WriteLine(L"Р’РІРµРґРёС‚Рµ СЂРµРіРёРѕРЅ:"); 
 SetConsoleCP(1251); 
  Console::CursorLeft=10; 
  Console::CursorTop=18; 
@@ -210,10 +210,10 @@ Console::ForegroundColor=ConsoleColor::White;
 Console::BackgroundColor=ConsoleColor::Red;
 Console::CursorLeft=30; 
 Console::CursorTop=17; 
-printf("Команд из региона: %s", reg);
+printf("РљРѕРјР°РЅРґ РёР· СЂРµРіРёРѕРЅР°: %s", reg);
 Console::CursorLeft=30; 
 Console::CursorTop=18; 
-printf("Всего : %d",k);
+printf("Р’СЃРµРіРѕ : %d",k);
 getch();
 }
 
@@ -251,7 +251,7 @@ if(!spisok)
 for(i=0;i<NT;i++) 
 vstavka(team,team[i].name, NT); 
 Console::Clear(); 
-printf("\n\t\t Алфавитный список команд и обратный"); 
+printf("\n\t\t РђР»С„Р°РІРёС‚РЅС‹Р№ СЃРїРёСЃРѕРє РєРѕРјР°РЅРґ Рё РѕР±СЂР°С‚РЅС‹Р№"); 
 printf("\n =======================================================================\n"); 
 for(nt=spisok; nt!=0; nt=nt->sled) 
 printf("\n %-30s %ld",nt->nteam,nt->all); 
@@ -314,10 +314,10 @@ void poisk(struct z *team, int NT) {
                     Console::BackgroundColor = ConsoleColor::Red;
                     Console::CursorLeft = 10;
                     Console::CursorTop = 15;
-                    printf("Существует 2 команды из разных регионов с одинаковыми призовыми");
+                    printf("РЎСѓС‰РµСЃС‚РІСѓРµС‚ 2 РєРѕРјР°РЅРґС‹ РёР· СЂР°Р·РЅС‹С… СЂРµРіРёРѕРЅРѕРІ СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё РїСЂРёР·РѕРІС‹РјРё");
                     Console::CursorLeft = 10;
                     Console::CursorTop = 16;
-                    printf("%s %10.3f и %s %10.3f", team[i].name, team[i].prise, team[j].name, team[j].prise);
+                    printf("%s %10.3f Рё %s %10.3f", team[i].name, team[i].prise, team[j].name, team[j].prise);
                     getch();
                     flag = 1; 
                 }
@@ -329,7 +329,7 @@ void poisk(struct z *team, int NT) {
         Console::BackgroundColor = ConsoleColor::Red;
         Console::CursorLeft = 10;
         Console::CursorTop = 15;
-        printf("В файле Car.dat не найдено разных команд с одинаковыми призовыми");
+        printf("Р’ С„Р°Р№Р»Рµ Car.dat РЅРµ РЅР°Р№РґРµРЅРѕ СЂР°Р·РЅС‹С… РєРѕРјР°РЅРґ СЃ РѕРґРёРЅР°РєРѕРІС‹РјРё РїСЂРёР·РѕРІС‹РјРё");
         getch();
     }
 }
