@@ -52,13 +52,12 @@ void poisk(struct z*,int);
 int main(array<System::String ^> ^args) 
 {
 
-char dan[7][55]={ 
+char dan[6][55]={ 
   "Какая команда команда имеет больше всего призовых?    ", 
   "Сколько команд в регионе <Введите регион>?            ", 
   "Алфавитный список всех команд                         ", 
   "Диаграмма: процент сыгранных матчей                   ", 
   "Есть ли одинаковые призовые у команд из разных регион?",
-  "Вопрос 6                                              ",
   "Выход                                                 " 
   }; 
 char BlankLine[ ]="                                                        "; 
@@ -103,24 +102,23 @@ _getch();
   Console::CursorLeft=10; 
   Console::CursorTop=4; 
   printf(BlankLine); 
-  for(i=0;i<7;i++) 
+  for(i=0;i<6;i++) 
   { 
   Console::CursorLeft=10; 
   Console::CursorTop=i+5; 
   printf(" %s ",dan[i]); 
   } 
   Console::CursorLeft=10; 
-  Console::CursorTop=12; 
+  Console::CursorTop=11; 
   printf(BlankLine); 
-  n = menu(7); 
+  n = menu(6); 
   switch(n) { 
     case 1:max_prise(team, NT); break; 
     case 2:kolvo(team, NT); break; 
     case 3:alfalist(team, NT) ; break; 
     case 4:diagram(team, NT); break;
 	case 5:poisk(team, NT); break;
-    case 6: ; break;
-    case 7: exit(0); 
+    case 6: exit(0); 
     } 
   } 
   return 0; 
@@ -128,13 +126,12 @@ _getch();
 } 
 int menu(int n) 
 {
-	char dan[7][55]={ 
+	char dan[6][55]={ 
   "Какая команда команда имеет больше всего призовых?    ", 
   "Сколько команд в регионе <Введите регион>?            ", 
   "Алфавитный список всех команд                         ", 
   "Диаграмма: процент сыгранных матчей                   ", 
   "Есть ли одинаковые призовые у команд из разных регион?",
-  "Вопрос 6                                              ",
   "Выход                                                 " 
   }; 
 char BlankLine[ ]="                                                        ";
@@ -329,7 +326,7 @@ void poisk(struct z *team, int NT) {
         Console::BackgroundColor = ConsoleColor::Red;
         Console::CursorLeft = 10;
         Console::CursorTop = 15;
-        printf("В файле Car.dat не найдено разных команд с одинаковыми призовыми");
+        printf("В файле table.dat не найдено разных команд с одинаковыми призовыми");
         getch();
     }
 }
