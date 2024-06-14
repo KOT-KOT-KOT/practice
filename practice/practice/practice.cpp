@@ -38,15 +38,15 @@ struct sp {
 	int all;
 	struct sp* sled;
 	struct sp* pred;	
-} *spisok;
+};
 
 int menu(int); 
 void max_prise(struct z*,int); 
 void kolvo(struct z*,int);
-void alfalist(struct z*,int);
-void vstavka(struct z*,char*,int);
+void alfalist(struct z*,int, struct sp**);
+void vstavka(struct z*,char*,int, struct sp**);
 void listing(struct z*,int);
-void diagram(struct z*,int);
+void diagram(struct z*,int,struct sp**);
 void poisk(struct z*,int);
 
 int main(array<System::String ^> ^args) 
@@ -112,11 +112,13 @@ _getch();
   Console::CursorTop=11; 
   printf(BlankLine); 
   n = menu(6); 
+
+  struct sp* spisok = 0;
   switch(n) { 
     case 1:max_prise(team, NT); break; 
     case 2:kolvo(team, NT); break; 
-    case 3:alfalist(team, NT) ; break; 
-    case 4:diagram(team, NT); break;
+    case 3:alfalist(team, NT, &spisok) ; break; 
+    case 4:diagram(team, NT, &spisok); break;
 	case 5:poisk(team, NT); break;
     case 6: exit(0); 
     } 
@@ -214,11 +216,11 @@ printf("Всего : %d",k);
 getch();
 }
 
-void vstavka(struct z* team,char* nteam, int NT) 
+void vstavka(struct z* team,char* nteam, int NT, struct sp**spisok) 
 { 
 int i; 
 struct sp *nov,*nt,*z=0; 
-for(nt=spisok; nt!=0 && strcmp(nt->nteam,nteam)<0; z=nt, nt=nt->sled); 
+for(nt=*spisok; nt!=0 && strcmp(nt->nteam,nteam)<0; z=nt, nt=nt->sled); 
 if(nt && strcmp(nt->nteam,nteam)==0) return; 
 nov=(struct sp *) malloc(sizeof(struct sp)); 
 strcpy(nov->nteam,nteam); 
@@ -228,7 +230,7 @@ nov->all=0;
 for(i=0;i<NT;i++) 
 if(strcmp(team[i].name,nteam)==0) 
 nov->all+=team[i].am; 
-if(!z) spisok=nov; 
+if(!z) *spisok=nov; 
 else z->sled=nov; 
  if(nt) nt->pred=nov;
   nov->sled = nt;
@@ -236,7 +238,7 @@ return;
 } 
 
 
-void alfalist(struct z* team, int NT) 
+void alfalist(struct z* team, int NT, struct sp**spisok) 
 { 
 int i, n=0; 
 struct sp* nt; 
@@ -244,15 +246,15 @@ struct sp* z;
 Console::ForegroundColor=ConsoleColor::Red; 
 Console::BackgroundColor=ConsoleColor::White; 
 Console::Clear(); 
-if(!spisok) 
+if(!*spisok) 
 for(i=0;i<NT;i++) 
-vstavka(team,team[i].name, NT); 
+vstavka(team,team[i].name, NT, spisok); 
 Console::Clear(); 
 printf("\n\t\t Алфавитный список команд и обратный"); 
 printf("\n =======================================================================\n"); 
-for(nt=spisok; nt!=0; nt=nt->sled) 
+for(nt=*spisok; nt!=0; nt=nt->sled) 
 printf("\n %-30s %ld",nt->nteam,nt->all); 
- for (nt = spisok, z=0; nt != 0; z=nt, nt = nt->sled);
+ for (nt = *spisok, z=0; nt != 0; z=nt, nt = nt->sled);
     for(nt=z; nt!=0; nt=nt->pred)
     {  
     Console::CursorLeft=48;
@@ -265,7 +267,7 @@ printf("\n %-30s %ld",nt->nteam,nt->all);
 
 
 
-void diagram(struct z *team, int NT)
+void diagram(struct z *team, int NT, struct sp**spisok)
 {
 struct sp *nt;
 int len,i,NColor;
@@ -277,11 +279,11 @@ Console::ForegroundColor=ConsoleColor::Black;
 Console::BackgroundColor=ConsoleColor::White;
 Console::Clear();
 for(i=0;i<NT;i++) sum = sum+team[i].am ;
-if(!spisok)
+if(!*spisok)
 	for(i=0;i<NT;i++)
-		vstavka(team,team[i].name, NT);
+		vstavka(team,team[i].name, NT, spisok);
 Color=ConsoleColor::Black; NColor=0;
-for(nt=spisok,i=0; nt!=0; nt=nt->sled,i++)
+for(nt=*spisok,i=0; nt!=0; nt=nt->sled,i++)
 	{
 	sprintf(str1,"%s",nt->nteam);
 	sprintf(str2,"%3.1f%%",(nt->all*100./sum));
